@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GazeTest : MonoBehaviour {
+
+    public Text gazeText;
 
     private CardboardHead gazeTestHead;
 
@@ -12,6 +15,6 @@ public class GazeTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    print(gazeTestHead.Gaze);
+	    gazeText.text = gazeTestHead.Gaze.ToString();
 	}
 }
