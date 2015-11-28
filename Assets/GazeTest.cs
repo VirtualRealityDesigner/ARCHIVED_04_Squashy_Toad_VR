@@ -10,11 +10,17 @@ public class GazeTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Cardboard.SDK.OnTrigger += PullTrigger;
         gazeTestHead = GameObject.FindObjectOfType<CardboardHead>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void PullTrigger()
+    {
+        gazeText.enabled = !gazeText.enabled;
+    }
+
+    // Update is called once per frame
+    void Update () {
 	    gazeText.text = gazeTestHead.Gaze.ToString();
 	}
 }
