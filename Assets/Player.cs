@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
         Cardboard.SDK.OnTrigger += PullTrigger;
         head = GameObject.FindObjectOfType<CardboardHead>();
         rb = GetComponent<Rigidbody>();
-	}
+    }
 
     private void PullTrigger()
     {
