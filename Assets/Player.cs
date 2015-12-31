@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 
     private CardboardHead head;
     private Rigidbody rb;
-    private bool onFloor;
+    private int collisionCount;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,8 @@ public class Player : MonoBehaviour {
 
     private void PullTrigger()
     {
-        if (onFloor)
+        print("PullTrigger");
+        if (collisionCount > 0)
         {
             float jumpAngleInRadians = jumpAngleInDegree * Mathf.Deg2Rad;
             Vector3 projectedVector = Vector3.ProjectOnPlane(head.Gaze.direction, Vector3.up);
@@ -31,12 +32,16 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        onFloor = true;
+        print("OnCollisionEnter" + collision.collider.GetHashCode());
+        collisionCount++;
+        print(collisionCount);
     }
 
     void OnCollisionExit(Collision collision)
     {
-        onFloor = false;
+        print("OnCollisionExit" + collision.collider.GetHashCode());
+        collisionCount--;
+        print(collisionCount);
     }
 
     // Update is called once per frame
