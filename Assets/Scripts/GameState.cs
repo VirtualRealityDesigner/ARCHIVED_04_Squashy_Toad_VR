@@ -19,4 +19,13 @@ public class GameState : MonoBehaviour {
         isGameOver = true;
     }
 
+    public void ResetGame()
+    {
+        Application.LoadLevel("Main");
+    }
+
+    public void BackToMenu()
+    {
+        Application.LoadLevel("SplashScreen");
+    }
 }
