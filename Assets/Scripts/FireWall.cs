@@ -5,16 +5,22 @@ public class FireWall : MonoBehaviour {
 
     public float creepSpeed = 0.01f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        FollowPlayer();
-        CreepForward();
-	}
+    private GameState state;
+
+    void Start ()
+    {
+        state = FindObjectOfType<GameState>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (!state.IsGameOver)
+        {
+            FollowPlayer();
+            CreepForward();
+            HasCaughtUpWithPlayer();
+        }
+    }
 
     void FollowPlayer ()
     {
@@ -27,5 +33,14 @@ public class FireWall : MonoBehaviour {
     void CreepForward ()
     {
         transform.position += Vector3.forward * creepSpeed;
+    }
+
+    void HasCaughtUpWithPlayer ()
+    {
+        GameObject player = GameObject.Find("Player");
+        if (player.transform.position.z < transform.position.z)
+        {
+            state.SetGameOver();
+        }
     }
 }

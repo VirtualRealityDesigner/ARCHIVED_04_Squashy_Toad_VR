@@ -11,13 +11,15 @@ public class Player : MonoBehaviour {
     private Rigidbody rb;
     private bool onFloor;
     private float lastJumpRequestTime = 0.0f;
+    private GameState state;
 
 	// Use this for initialization
 	void Start () {
         Cardboard.SDK.OnTrigger += PullTrigger;
         head = GameObject.FindObjectOfType<CardboardHead>();
         rb = GetComponent<Rigidbody>();
-	}
+        state = FindObjectOfType<GameState>();
+    }
 
     private void PullTrigger()
     {
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour {
     void OnCollisionStay(Collision collision)
     {
         float delta = Time.time - lastJumpRequestTime;
-        if (delta < 0.1)
+        if (delta < 0.1 && !state.IsGameOver)
         {
             Jump();
             lastJumpRequestTime = 0.0f;
