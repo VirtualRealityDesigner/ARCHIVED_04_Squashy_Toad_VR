@@ -33,9 +33,13 @@ public class Player : MonoBehaviour {
     private void Jump()
     {
         float jumpAngleInRadians = jumpAngleInDegree * Mathf.Deg2Rad;
-        Vector3 projectedVector = Vector3.ProjectOnPlane(head.Gaze.direction, Vector3.up);
-        Vector3 jumpVector = Vector3.RotateTowards(projectedVector, Vector3.up, jumpAngleInRadians, 0);
+        Vector3 jumpVector = Vector3.RotateTowards(LookDirection(), Vector3.up, jumpAngleInRadians, 0);
         rb.velocity = jumpVector * jumpSpeed;
+    }
+
+    public Vector3 LookDirection()
+    {
+        return Vector3.ProjectOnPlane(head.Gaze.direction, Vector3.up);
     }
 
     void OnCollisionStay(Collision collision)
