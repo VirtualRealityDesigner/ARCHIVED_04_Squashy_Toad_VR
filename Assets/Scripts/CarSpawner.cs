@@ -8,10 +8,21 @@ public class CarSpawner : MonoBehaviour {
     public float startOffset = -500.0f;
     public float finishOffset = 500.0f;
     public float laneSpeed = 5.0f;
+    public float maxSpawnTime = 10f;
 
     // Use this for initialization
     void Start() {
-        InstantiateVehicle(0);
+        StartCoroutine("Spawn");
+    }
+
+    IEnumerator Spawn()
+    {
+        while (true)
+        {
+            WaitForSeconds randomWait = new WaitForSeconds(Random.Range(0.5f, maxSpawnTime));
+            yield return randomWait;
+            InstantiateVehicle(0);
+        }
     }
 
     void InstantiateVehicle(int index)
