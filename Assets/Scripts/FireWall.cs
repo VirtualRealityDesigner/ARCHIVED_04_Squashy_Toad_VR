@@ -16,9 +16,9 @@ public class FireWall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        FollowPlayer();
         if (!state.IsGameOver)
         {
-            FollowPlayer();
             CreepForward();
             CheckPlayerBurnt();
         }
