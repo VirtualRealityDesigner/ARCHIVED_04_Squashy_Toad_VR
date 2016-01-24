@@ -7,6 +7,7 @@ public class VehicleSpawner : MonoBehaviour {
     public float heightOffset = 1f;
     public float startOffset = -10f;
     public float speed = 5.0f;
+    public float length = 20.0f;
 
     // Use this for initialization
     void Start() {
@@ -20,7 +21,7 @@ public class VehicleSpawner : MonoBehaviour {
         vehicleObject.transform.parent = transform;
 
         Vehicle vehicleComponent = vehicleObject.GetComponent<Vehicle>();
-        vehicleComponent.SetSpeed(speed);
+        vehicleComponent.SetPath(speed, length);
     }
 
     Vector3 GetPositionOffset()

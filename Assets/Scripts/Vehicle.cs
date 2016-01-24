@@ -3,16 +3,24 @@ using System.Collections;
 
 public class Vehicle : MonoBehaviour {
 
-    private float speed = 5.0f;
+    private float speed;
+    private float length;
 
 	// Use this for initialization
 	void Start () {
-	
+        float lifeTime = length / speed;
+        Invoke("Remove", lifeTime);
 	}
 
-    public void SetSpeed(float someSpeed)
+    void Remove()
+    {
+        Destroy(gameObject);
+    }
+
+    public void SetPath(float someSpeed, float someLength)
     {
         speed = someSpeed;
+        length = someLength;
     }
 	
 	// Update is called once per frame
