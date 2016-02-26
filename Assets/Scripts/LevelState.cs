@@ -3,7 +3,27 @@ using System.Collections;
 
 public class LevelState : MonoBehaviour {
 
-    public bool IsGameOver { get; set; }
+    private bool _isGameOver = false;
+    public bool IsGameOver
+    {
+        get { return _isGameOver; }
+        set
+        {
+            if (value)
+            {
+                SetHighScore();
+            }
+            _isGameOver = value;
+        }
+    }
+
+    private void SetHighScore()
+    {
+        GameState state = GameObject.FindObjectOfType<GameState>();
+        Player player = GameObject.FindObjectOfType<Player>();
+        int score = Mathf.FloorToInt(player.transform.position.z);
+        state.UpdateHighScore(score);
+    }
 
 	public void ResetGame()
     {
