@@ -6,12 +6,12 @@ public class FireWall : MonoBehaviour {
     public float creepSpeed = 0.01f;
 
     private Player player;
-    private GameState state;
+    private LevelState state;
 
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindObjectOfType<Player>();
-        state = GameObject.FindObjectOfType<GameState>();
+        state = GameObject.FindObjectOfType<LevelState>();
 	}
 	
 	// Update is called once per frame

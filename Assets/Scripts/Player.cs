@@ -11,14 +11,14 @@ public class Player : MonoBehaviour {
     private Rigidbody rb;
     private bool onFloor;
     private float lastJumpRequestTime = 0.0f;
-    private GameState state;
+    private LevelState state;
 
 	// Use this for initialization
 	void Start () {
         Cardboard.SDK.OnTrigger += PullTrigger;
         head = GameObject.FindObjectOfType<CardboardHead>();
         rb = GetComponent<Rigidbody>();
-        state = GameObject.FindObjectOfType<GameState>();
+        state = GameObject.FindObjectOfType<LevelState>();
 	}
 
     private void PullTrigger()
