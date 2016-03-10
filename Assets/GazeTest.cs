@@ -18,8 +18,10 @@ public class GazeTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        var camera = GetComponent<Camera>();
-        var lookDirection = camera.transform.rotation * Vector3.forward;
-	    gazeText.text = lookDirection.ToString();
-	}
+        var mouseX = Input.GetAxis("Mouse X");
+        if (mouseX > 1.0f)
+        {
+            gazeText.text = "Swipe Detected";
+        }
+    }
 }
