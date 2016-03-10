@@ -6,12 +6,9 @@ public class GazeTest : MonoBehaviour {
 
     public Text gazeText;
 
-    //private CardboardHead gazeTestHead;
-
 	// Use this for initialization
 	void Start () {
         //Cardboard.SDK.OnTrigger += PullTrigger;
-        //gazeTestHead = GameObject.FindObjectOfType<CardboardHead>();
 	}
 
     private void PullTrigger()
@@ -21,6 +18,8 @@ public class GazeTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-	    //gazeText.text = gazeTestHead.Gaze.ToString();
+        var camera = GetComponent<Camera>();
+        var lookDirection = camera.transform.rotation * Vector3.forward;
+	    gazeText.text = lookDirection.ToString();
 	}
 }
