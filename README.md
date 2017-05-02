@@ -242,6 +242,3 @@
 + Spawning new lanes with a buffer.
 + Destroying lanes with a buffer.
 + Ideas for continuing the game.
-
----
-Find out more about our [Virtual Reality Designer Course](https://www.udemy.com/vrcourse/?couponCode=GitHubDiscount).
